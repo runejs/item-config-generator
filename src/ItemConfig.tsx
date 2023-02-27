@@ -214,18 +214,20 @@ const ItemConfig: FC<ItemConfigProps> = (props) => {
                         if(e?.value) {
                             getData(e.value);
                         }
-                    }} isLoading={!searchable} isClearable options={selectOptions} windowThreshold={100}/>
+                    }}
+                                    placeholder={"Search for an id or item name"}
+                                    isLoading={!searchable} isClearable options={selectOptions} windowThreshold={100}/>
                 </div>
-                <div style={{
-                    display: 'flex',
-                }}>
-                    <div>
-                        <input value={id} onChange={(e) => setId(e.target.value)} placeholder={"ItemId"}/>
-                    </div>
-                    <div>
-                        <button type={'submit'}>GO!</button>
-                    </div>
-                </div>
+                {/*<div style={{*/}
+                {/*    display: 'flex',*/}
+                {/*}}>*/}
+                {/*    <div>*/}
+                {/*        <input value={id} onChange={(e) => setId(e.target.value)} placeholder={"ItemId"}/>*/}
+                {/*    </div>*/}
+                {/*    <div>*/}
+                {/*        <button type={'submit'}>GO!</button>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
             </form>
 
             <div>
