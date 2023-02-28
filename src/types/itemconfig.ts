@@ -74,5 +74,5 @@ export interface WeaponInfo {
 }
 
 export type WeaponStyle = 'axe' | 'hammer' | 'bow' | 'claws' | 'crossbow' | 'longsword'
-    | '2h_sword' | 'pickaxe' | 'halberd' | 'staff' | 'scythe' | 'spear' | 'mace'
-    | 'dagger' | 'magical_staff' | 'darts' | 'unarmed' | 'polestaff' | 'whip';
+    | '2h_sword' | 'pickaxe' | 'halberd' | 'polestaff' | 'scythe' | 'spear' | 'mace'
+    | 'dagger' | 'magical_staff' | 'darts' | 'unarmed' | 'whip';

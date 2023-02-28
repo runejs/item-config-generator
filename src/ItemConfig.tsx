@@ -54,21 +54,19 @@ const WikiToWeaponStyle: Record<Partial<WikiItemWeaponType>, WeaponStyle | undef
     pickaxe: "pickaxe",
     polearm: "halberd",
     polestaff: "polestaff",
-    powered_staff: "magical_staff",
+    // powered_staff: "magical_staff",
     // salamander: "salamander",
     scythe: "scythe",
     slash_sword: "longsword",
     spear: "spear",
     spiked: "mace",
     stab_sword: "dagger",
-    staff: "staff",
+    staff: "magical_staff",
     thrown: "darts",
     unarmed: "unarmed",
     whip: "whip"
 }
-//|
-//     | | 'halberd' | | 'mace'
-//     | ;
+
 
 function WikiToItem(data: WikiItem) {
     const resultItem: ItemConfiguration = {
