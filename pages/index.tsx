@@ -36,9 +36,7 @@ export default function Home() {
                         </p>
                     </div>
                     <ItemConfig />
-
                 </div>
-
             </main>
         </>
     )
