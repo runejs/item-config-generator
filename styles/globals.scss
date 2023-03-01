@@ -1,0 +1,84 @@
+@import "variables";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@mixin bodyText {
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  /*Desktop*/
+  font-size: 14px;
+  line-height: 120%;
+  color: $colour-text-secondary;
+
+  //@include underBreakpoint($small-breakpoint) {
+  //  /*MOBILE*/
+  //  font-size: 16px;
+  //  line-height: 19px;
+  //}
+}
+
+body {
+  margin: 0;
+  padding: 0 0;
+  @include bodyText;
+  min-height: 100vh;
+  background-image: linear-gradient(rgba($colour-background,0.9), rgba($colour-background,0.9)), url(/background_image.png);
+}
+
+
+div#__next {
+  min-height: 100vh;
+  display: grid;
+  grid-auto-rows: 60px auto;
+  //&::after {
+  //  content: "";
+  //  background-image: url(/background_image.png);
+  //  background-size: cover;
+  //  position: absolute;
+  //  top: 0px;
+  //  right: 0px;
+  //  bottom: 0px;
+  //  left: 0px;
+  //  opacity: 0.1;
+  //}
+}
+
+
+h1 {
+  font-weight: 600;
+  font-size: 18px;
+  padding: 2px;
+  margin: 4px;
+  color: $colour-text-primary;
+}
+p{
+  padding: 2px;
+  margin: 4px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.content-padding {
+  padding: 2.5rem 1.5rem;
+  //@include underBreakpoint($small-breakpoint) {
+  //  /*MOBILE*/
+  //  font-size: 16px;
+  //  line-height: 19px;
+  //}
+}
+
+
+a {
+  font-weight: 600;
+  color: $colour-link;
+  text-decoration: inherit;
+  &:hover {
+    color: $colour-link-hover;
+
+  }
+}

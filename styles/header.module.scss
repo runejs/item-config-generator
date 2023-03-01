@@ -1,0 +1,25 @@
+@import "variables";
+
+
+.header {
+  background: rgba(81, 69, 50, 0.2);
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 10rem;
+  padding-right: 10rem;
+  align-items: center;
+  @include underBreakpoint($small-breakpoint) {
+    /*MOBILE*/
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .logo {
+
+  }
+
+  .links {
+    display: flex;
+    gap: 1rem;
+  }
+}

@@ -1,0 +1,12 @@
+$colour-text-primary: #3F424B;
+$colour-text-secondary: #8A8070;
+$colour-background: #F1ECDD;
+$colour-link: #514532;
+$colour-link-hover: #8A8070;
+:export {
+  colour-text-primary: $colour-text-primary;
+  colour-text-secondary: $colour-text-secondary;
+  colour-background: $colour-background;
+  colour-link: $colour-link;
+  colour-link-hover: $colour-link-hover;
+}

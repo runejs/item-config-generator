@@ -1,0 +1,21 @@
+@import "colours.module";
+$large-breakpoint: 1300px;
+$medium-breakpoint: 1000px;
+$small-breakpoint: 600px;
+
+
+
+
+
+@mixin breakpoint($point) {
+  @media (min-width: $point) {
+    @content;
+  }
+}
+
+
+@mixin underBreakpoint($point) {
+  @media (max-width: calc(#{$point} + 1px)) {
+    @content;
+  }
+}
