@@ -12,9 +12,7 @@ const Header: FC<HeaderProps> = (props) => {
             <div className={styles.logo}>
                 <Image src={logo} alt={'Runejs logo'} />
             </div>
-            {/*            <div>*/}
-            {/*b*/}
-            {/*            </div>*/}
+            
             <div className={styles.links}>
                 <Link href={'https://github.com/runejs/'}>Github</Link>
                 <Link href={'https://discord.gg/5P74nSh'}>Discord</Link>
