@@ -34,18 +34,6 @@ function fallbackCopyTextToClipboard(text: string) {
 
     document.body.removeChild(textArea);
 }
-function copyTextToClipboard(text: string) {
-    if (!navigator.clipboard) {
-        fallbackCopyTextToClipboard(text);
-        return;
-    }
-    navigator.clipboard.writeText(text).then(function() {
-        // console.log('Async: Copying to clipboard was successful!');
-    }, function(err) {
-        console.error('Async: Could not copy text: ', err);
-    });
-}
-
 
 function handleEditorWillMount(monaco: Monaco) {
     monaco.editor.defineTheme("rjs", {
@@ -123,6 +111,7 @@ function handleEditorWillMount(monaco: Monaco) {
 }
 const ItemConfig: FC<ItemConfigProps> = (props) => {
     const [data, setData] = useState<WikiItem | { error: string } | undefined>(undefined);
+    const [copyBtnLabel, setCopyBtnLabel] = useState("Copy to clipboard");
     const searchable = useSearchableItems()
 
     const selectOptions = useMemo(() => searchable?.map((data) => ({
@@ -135,6 +124,7 @@ const ItemConfig: FC<ItemConfigProps> = (props) => {
 
         if (req.status === 200) {
             setData(await req.json());
+            setCopyBtnLabel("Copy to clipboard");
         } else {
             console.error({error: `Failed to get item with id ${itemId}`});
         }
@@ -154,6 +144,20 @@ const ItemConfig: FC<ItemConfigProps> = (props) => {
 
     }, [data])
 
+    function copyTextToClipboard(text: string) {
+        if (!navigator.clipboard) {
+            fallbackCopyTextToClipboard(text);
+            setCopyBtnLabel("Something went wrong");
+            return;
+        }
+        navigator.clipboard.writeText(text).then(function() {
+            // console.log('Async: Copying to clipboard was successful!');
+            setCopyBtnLabel("Copied configuration!");
+        }, function(err) {
+            setCopyBtnLabel("Something went wrong");
+            console.error('Async: Could not copy text: ', err);
+        });
+    }
 
     return (
         <div className={styles.dataContainer}>
@@ -197,8 +201,8 @@ const ItemConfig: FC<ItemConfigProps> = (props) => {
             {output &&<div className={styles.editorWrapper}>
                 <div className={styles.copyButton}>
                     <button onClick={(e) => copyTextToClipboard(output)}>
-                        <Image style={{paddingRight: 4}} height={12} width={12} src={clipboard} alt={'Copy to clipboard'}/>
-                        Copy to clipboard
+                        <Image style={{paddingRight: 4}} height={12} width={12} src={clipboard} alt={copyBtnLabel}/>
+                        {copyBtnLabel}
                     </button>
 
                 </div>
