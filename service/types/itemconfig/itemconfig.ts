@@ -73,6 +73,6 @@ export interface WeaponInfo {
     playerAnimations: any;
 }
 
-export type WeaponStyle = 'axe' | 'hammer' | 'bow' | 'claws' | 'crossbow' | 'longsword'
+export type WeaponStyle = 'axe' | 'hammer' | 'bow' | 'claws' | 'crossbow' | 'slash_sword'
     | '2h_sword' | 'pickaxe' | 'halberd' | 'polestaff' | 'scythe' | 'spear' | 'mace'
-    | 'dagger' | 'magical_staff' | 'darts' | 'unarmed' | 'whip';
+    | 'dagger' | 'magical_staff' | 'darts' | 'unarmed' | 'whip' | 'gun';
