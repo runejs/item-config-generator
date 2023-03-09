@@ -1,7 +1,7 @@
 import {FC, useMemo, useState} from 'react';
 import styles from "@/styles/Home.module.scss";
 import WindowedSelect from "react-windowed-select";
-import {components} from "react-select";
+import {components, createFilter} from "react-select";
 import Image from "next/image";
 import searchIcon from "@/public/Search.svg";
 import clipboard from "@/public/Clipboard.svg";
@@ -161,43 +161,53 @@ const ItemConfig: FC<ItemConfigProps> = (props) => {
 
     return (
         <div className={styles.dataContainer}>
-            <div className={styles.searchBoxWrapper}><WindowedSelect
-                className={styles.searchBox}
-                components={{
-                    Control: ({children, ...rest}) => (
-                        <components.Control {...rest}><Image style={{paddingLeft: 8}} src={searchIcon}
-                                                             alt={'Search'}/>{children}
-                        </components.Control>)
-                }}
-                styles={{
-                    placeholder: (base) => ({
-                        ...base,
-                        color: '#B4AC9E',
-                    }),
-                    dropdownIndicator: (base) => ({
-                        ...base,
-                        color: '#B4AC9E',
-                    }),
-                    indicatorSeparator: (base) => ({
-                        ...base,
-                        backgroundColor: '#B4AC9E',
-                    }),
-                    input: (base) => ({
-                        ...base,
-                        color: '#B4AC9E',
-                    })
-                }}
-                // @ts-ignore
-                onChange={(e: {label: string, value: number} | undefined) => {
-                    if(e?.value) {
-                        getData(e.value);
-                    }
-                }}
-                placeholder={"Search for an item by name or id"}
-                isLoading={!searchable}
-                isClearable
-                options={selectOptions}
-                windowThreshold={100}/></div>
+            <div className={styles.searchBoxWrapper}>
+                <WindowedSelect
+                    className={styles.searchBox}
+                    components={{
+                        Control: ({children, ...rest}) => (
+                            <components.Control {...rest}><Image style={{paddingLeft: 8}} src={searchIcon}
+                                                                alt={'Search'}/>{children}
+                            </components.Control>)
+                    }}
+                    styles={{
+                        placeholder: (base, state) => ({
+                            ...base,
+                            color: '#B4AC9E',
+                            
+                        }),
+                        dropdownIndicator: (base) => ({
+                            ...base,
+                            color: '#B4AC9E',
+                        }),
+                        indicatorSeparator: (base) => ({
+                            ...base,
+                            backgroundColor: '#B4AC9E',
+                        }),
+                        input: (base) => ({
+                            ...base,
+                            color: '#B4AC9E',
+                        }),
+                        option: (base, state) => ({
+                            ...base,
+                            backgroundColor: state.isFocused ? '#DFD8CC' : null,
+                            color: state.isFocused ? '#3F424B' : '#B4AC9E',
+                        })
+                    }}
+                    // @ts-ignore
+                    onChange={(e: {label: string, value: number} | undefined) => {
+                        if(e?.value) {
+                            getData(e.value);
+                        }
+                    }}
+                    placeholder={"Search for an item by name or id"}
+                    isLoading={!searchable}
+                    isClearable
+                    options={selectOptions}
+                    windowThreshold={100}
+                    filterOption={createFilter({ ignoreAccents: false })}
+                />
+            </div>
             {output &&<div className={styles.editorWrapper}>
                 <div className={styles.copyButton}>
                     <button onClick={(e) => copyTextToClipboard(output)}>
