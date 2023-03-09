@@ -23,6 +23,7 @@ body {
   @include bodyText;
   min-height: 100vh;
   background-image: linear-gradient(rgba($colour-background,0.9), rgba($colour-background,0.9)), url(/background_image.png);
+  background-size: cover;
 }
 
 
