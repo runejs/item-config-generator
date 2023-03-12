@@ -174,7 +174,7 @@ const ItemConfig: FC<ItemConfigProps> = (props) => {
                         placeholder: (base, state) => ({
                             ...base,
                             color: '#B4AC9E',
-                            
+
                         }),
                         dropdownIndicator: (base) => ({
                             ...base,
@@ -190,7 +190,7 @@ const ItemConfig: FC<ItemConfigProps> = (props) => {
                         }),
                         option: (base, state) => ({
                             ...base,
-                            backgroundColor: state.isFocused ? '#DFD8CC' : null,
+                            backgroundColor: state.isFocused ? '#DFD8CC' : undefined,
                             color: state.isFocused ? '#3F424B' : '#B4AC9E',
                         })
                     }}
